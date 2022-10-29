@@ -3,7 +3,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-#define PERCORSO "/home/theflag/Documents/unisa/II/so/git_syn/prova/ciao"
+#define PERCORSO "/home/theflag/Documents/unisa/II/so/git_syn/provaExec/ciao"
 
 
 int main(void)
@@ -20,7 +20,8 @@ int main(void)
 			break;
 
 		case 0: // figlio 1
-				execl(PERCORSO,"ciao",NULL);
+			int x = execl(PERCORSO,"ciao",NULL);
+			printf("%d",x);
 			break;		
 	}
 
@@ -38,6 +39,7 @@ int main(void)
 	}
 
 	
+	wait(NULL);
 	wait(NULL);
 	printf("\nCiao sono il padre con il pid %d\n",getpid());
 }
