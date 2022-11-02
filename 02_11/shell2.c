@@ -7,6 +7,7 @@
 
 
 void input(char ** strvet );
+void input2(char ** strvet);
 
 int main(void)
 {
@@ -17,7 +18,7 @@ int main(void)
 	{
 
 		printf("%%");
-		input(arg);
+		input2(arg);
 
 		pid=fork();
 
@@ -30,7 +31,7 @@ int main(void)
 			case 0: // figlio		
 				if(execvp(arg[0],arg)==-1)
 				{
-					fprintf(stderr,"Errore nell esecuzione della funzione exec");
+					//fprintf(stderr,"Errore nell esecuzione della funzione exec");
 					exit(0);
 				}			
 		}
@@ -82,4 +83,25 @@ void input(char ** strvet )
 	index ++;
 	strvet[index] = NULL;
 
+}
+
+void input2(char ** strvet)
+{
+	char buffer [256] ={0};
+	char c;
+	int index;
+
+	index = 0;
+
+	while(c!='\n')
+	{
+		scanf("%[^ \n]",buffer);
+		strvet[index] = calloc(strlen(buffer)+1,sizeof(char)); // andrebbe controllata la corretta
+		strncpy(strvet[index],buffer,strlen(buffer));
+		//printf("%s\n",strvet[index]);
+		index++;
+		c = getchar();
+		
+	}
+	strvet[index] = NULL;
 }
