@@ -95,7 +95,8 @@ void input2(char ** strvet)
 
 	while(c!='\n')
 	{
-		scanf("%[^ \n]",buffer);
+	
+		scanf("%[^ \n]s",buffer);
 		strvet[index] = calloc(strlen(buffer)+1,sizeof(char)); // andrebbe controllata la corretta
 		strncpy(strvet[index],buffer,strlen(buffer));
 		//printf("%s\n",strvet[index]);
